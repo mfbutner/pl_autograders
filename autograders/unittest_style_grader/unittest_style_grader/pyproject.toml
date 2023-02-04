@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unittest_style_grader"
+version = "1.0.0"
+dependencies = ["Jinja2>=3.1.2", "multimethod>=1.8"]
+
+
+[tool.setuptools]
+include-package-data = false # don't automatically include non python files found in the project
+
+[tool.setuptools.packages.find]
+where =  ["src"]
+
+[tool.setuptools.package-data]
+"unittest_style_grader.templates" = ["*"]
+
+[project.scripts]
+utsg_run_tests = "unittest_style_grader.run_tests:run_tests"

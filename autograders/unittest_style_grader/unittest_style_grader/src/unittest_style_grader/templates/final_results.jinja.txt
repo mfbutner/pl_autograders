@@ -1,0 +1,18 @@
+Ran {{total_results.num_tests_ran}} of {{total_results.num_tests_available}} available tests.
+The results of {{visible_results.num_tests_ran}} of the tests ran are visible to you
+while the results of the remaining {{hidden_results.num_tests_ran}} tests are hidden.
+
+Visible Tests
+  Passed {{visible_results.num_tests_passed}} of the {{visible_results.num_tests_ran}} visible tests run.
+  Failed {{visible_results.num_tests_failed}} of the {{visible_results.num_tests_ran}} visible tests run.
+
+Hidden Tests
+  Passed {{hidden_results.num_tests_passed}} of the {{hidden_results.num_tests_ran}} hidden tests run.
+  Failed {{hidden_results.num_tests_failed}} of the {{hidden_results.num_tests_ran}} hidden tests run.
+
+Overall Results
+  Passed {{total_results.num_tests_passed}} of ALL {{total_results.num_tests_ran}} tests run.
+  Failed {{total_results.num_tests_failed}} of ALL {{total_results.num_tests_ran}} tests run.
+  Score: {{score}}%
+
+
