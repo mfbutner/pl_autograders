@@ -229,9 +229,10 @@ class UTSGTestCase(unittest.TestCase):
 
     # helper methods for running and testing programs
     @staticmethod
-    def run_program(*args, **kwargs) -> subprocess.CompletedProcess:
+    def run_program(these_exceptions_make_ungradable:None|tuple[type] = None, **kwargs) -> subprocess.CompletedProcess:
         """
-        Does subprocess.run(*args, **kwargs) but captures any errors raised and transforms them into
+        Does subprocess.run(**kwargs) but
+        1. Outputs are placed into temporary files
         UngradableError. This is useful for when you need to run a program as the instructor and it must work
         :param args: positional args to forward to subprocess.run
         :param kwargs: keyword arguments to forward to subprocess.run
@@ -279,7 +280,7 @@ class UTSGTestCase(unittest.TestCase):
         """
         Do subprocess.run(**subprocess_run_keyword_args) as the student user,
         checking the results against the expected values. Expected values are only checked if
-        test_info is supplied and the results of the test are tehn stored there.
+        test_info is supplied and the results of the test are then stored there.
         If test_info is supplied and a mismatch in any of the expected vs produced values occurs
         the test is marked as a failure.
 
@@ -426,8 +427,8 @@ class UTSGTestCase(unittest.TestCase):
                                               timeout=timeout,
                                               cwd=instructor_working_directory,
                                               text=True)
-        # limit student output to be about twice that of the instructor's
-        bufsize = len(instructor_results.stdout) * 2 + 500
+
+
         self.run_under_test_as_student(test_info=test_info,
                                        files_accessible=files_accessible_to_student,
                                        these_exceptions_makes_ungradable=these_exceptions_makes_ungradable,
@@ -436,8 +437,7 @@ class UTSGTestCase(unittest.TestCase):
                                        expected_return_code=instructor_results.returncode if check_return_code else None,
                                        enforce_whitespace=enforce_whitespace, args=student_args, input=stdin,
                                        check=True,
-                                       capture_output=True, timeout=timeout, cwd=student_working_directory, text=True,
-                                       bufsize=bufsize)
+                                       capture_output=True, timeout=timeout, cwd=student_working_directory, text=True)
 
     @staticmethod
     def _describe_how_program_was_run(run_args: list[str], stdin: Optional[str] = None, prepend: str = '',

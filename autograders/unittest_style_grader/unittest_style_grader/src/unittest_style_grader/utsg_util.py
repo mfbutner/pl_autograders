@@ -1,5 +1,6 @@
-
 import string
+
+
 def are_strs_equal_ignoring_whitespace(str1: str | bytes, str2: str | bytes) -> bool:
     if isinstance(str1, bytes):
         str1 = str1.decode()

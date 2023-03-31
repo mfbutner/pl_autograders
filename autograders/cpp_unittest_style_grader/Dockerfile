@@ -4,11 +4,14 @@ LABEL author="Matthew Butner"
 LABEL mainter="mfbutner@ucdavis.edu"
 
 RUN apt-get update && apt-get install -y  \
+    cmake \
     g++   \
+    g++-multilib \
     gcc  \
-    valgrind \
+    gcc-multilib \
     make \
-    cmake && \
+    valgrind \
+    && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /requirements.txt
