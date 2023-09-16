@@ -279,8 +279,8 @@ class UTSGTestCase(unittest.TestCase):
         """
         Do subprocess.run(**subprocess_run_keyword_args) as the student user,
         checking the results against the expected values. Expected values are only checked if
-        test_info is supplied and the results of the test are tehn stored there.
-        If test_info is supplied and a mismatch in any of the expected vs produced values occurs
+        test_info is supplied and the results of the test are then stored there.
+        If test_info is supplied and a mismatch in any of the expected vs produced values occurs,
         the test is marked as a failure.
 
         :param these_exceptions_makes_ungradable: a tuple of Exception types that if

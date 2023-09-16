@@ -25,15 +25,15 @@ RUN useradd -g sbuser sbuser
 # install python and remove cache
 RUN apt-get update && apt-get install -y  \
     acl \
-    python3.10  \
+    python3.11  \
     python3-pip  \
-    python3.10-venv &&  \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    python3.11-venv \
+    && apt clean && rm -rf /var/lib/apt/lists/*
 
 
 
 # make sure that our installed version of python3 is the one that gets run
-RUN ln -sf /usr/bin/python3.10 /usr/bin/python3
+RUN ln -sf /usr/bin/python3.11 /usr/bin/python3
 
 # install the build dependencies
 COPY build_requirements.txt /build_requirements.txt
